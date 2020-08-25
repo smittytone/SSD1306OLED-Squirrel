@@ -243,7 +243,7 @@ class SSD1306OLED {
      *  Output the buffer to the display
      */
     function draw() {
-        _render();
+        _write(false, _buffer.tostring());
     }
 
     /**
@@ -393,11 +393,6 @@ class SSD1306OLED {
         local pre = isCommand ? "\x00" : "\x40";
         local r = _i2c.write(_address, pre + data);
         if (r != 0) server.error("I2C read/write: " + r);
-    }
-
-    function _render() {
-        //Write the display buffer out to I2C
-        _write(false, _buffer.tostring());
     }
 
     function _coordsToIndex(x, y) {
