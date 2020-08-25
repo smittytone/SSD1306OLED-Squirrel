@@ -406,13 +406,13 @@ class SSD1306OLED {
     }
 
     /**
-     *  Draw a line from the currenr cursor position to the specified point
+     *  Draw a line from the current cursor position to the specified point
      *  You must call 'draw()' to update the display
      *
-     *  @param {integer} tox - The column of the end of the line
-     *  @param {integer} toy - The row of the end of the line
+     *  @param {integer} tox         - The column of the end of the line
+     *  @param {integer} toy         - The row of the end of the line
      *  @param {integer} [thickness] - The line thickness in pixels. Default: 1
-     *  @param {integer} [colour] - The line colour: 1 (set) or 0 (clear). Default: set
+     *  @param {integer} [colour]    - The line colour: 1 (set) or 0 (clear). Default: set
      *
      *  @returns {instance} The instance
      */
@@ -455,11 +455,12 @@ class SSD1306OLED {
     }
 
     /**
-     *  Draw a circle at the currenr cursor position of the specified radius
+     *  Draw a circle at the current cursor position of the specified radius
      *  You must call 'draw()' to update the display
      *
      *  @param {integer} radius   - The radius of the circle in pixels
      *  @param {integer} [colour] - Should the circle be filled? Default: false
+     *  @param {integer} [colour] - The line colour: 1 (set) or 0 (clear). Default: set
      *
      *  @returns {instance} The instance
      */
@@ -488,6 +489,34 @@ class SSD1306OLED {
                         } while (true);
                     }
                 }
+            }
+        }
+
+        return this;
+    }
+
+    /**
+     *  Draw a rectabgle from at the current cursor position to the specified co-ordinates
+     *  You must call 'draw()' to update the display
+     *
+     *  @param {integer} width    - The width of the rectangle in pixels
+     *  @param {integer} height   - The height of the rectangle in pixels
+     *  @param {integer} [colour] - The line colour: 1 (set) or 0 (clear). Default: set
+     *  @param {boolean} [fill]   - Should the rectangle be filled? Default: false
+     *
+     *  @returns {instance} The instance
+     */
+    function rect(width, height, colour = 1, fill = false) {
+        // Make sure we only draw on the screen
+        local x = _x;
+        local y = _y;
+        if (x + width > _width) width = _width - x;
+        if (y + height > _height) height = _height - y;
+
+        for (local i = y ; i < y + height ; i++) {
+            for (local j = x ; j < x + width ; j++) {
+                plot(j, i, colour);
+                if (!fill && x < j && j < x + width - 1 && y < i && i < y + height - 1) plot(j, i, 0);
             }
         }
 
