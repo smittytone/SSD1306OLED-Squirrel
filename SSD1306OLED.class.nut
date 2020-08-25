@@ -50,7 +50,7 @@ enum SSD1306_CONSTANTS {
 
 /**
  * Hardware driver for Adafruit 128 x 32 and 128 x 64 OLED displays
- * based on the Solomon SSD§1306 controller.
+ * based on the Solomon SSD1306 controller.
  * For example: http://www.adafruit.com/products/931
  *
  * Bus          I2C
