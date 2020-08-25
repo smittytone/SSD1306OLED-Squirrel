@@ -77,7 +77,7 @@ This method moves the text cursor to the home position: the top left of the scre
 
 This sets or clears a single pixel, specified by its co-ordinates, on the display. It does not update the screen — call [*draw()*](#draw) to do so.
 
-By default, *plot()* uses the current ink colour: white for a white-on-black display, or black for black-on-white (see [*inverse()*](#inversemakeinverse)), but you can set the ink colour to clear the pixel instead. Pass 1 for the foreground colour (the default) or 0 for the background colour.
+By default, *plot()* uses the current ink colour: white for a white-on-black display, or black for black-on-white (see [*set_inverse()*](#set-inverse-is-inverse)), but you can set the ink colour to clear the pixel instead. Pass 1 for the foreground colour (the default) or 0 for the background colour.
 
 *plot()* returns a reference to the driver instance in order to allow command chaining.
 
@@ -116,6 +116,19 @@ This method draws a circle centred on the current cursor co-ordinates and with t
 ```squirrel
 // Draw two filled circles side by side
 display.move(47, 16).circle(14, 1, true).move(81, 16).circle(14, 1, true).draw();
+```
+
+### rect(*width, height[, colour][, fill]*) ###
+
+This method draws a rectangle from the current cursor co-ordinates, extending by the specified width and height. If no ink colour is specified, the method defaults to the current foreground colour. You can also opt to pass `true` into the *fill* parameter to create a solid rectangle; otherwise an outline will be drawn.
+
+*rect()* does not update the screen — call [*draw()*](#draw) to do so.
+
+#### Example ####
+
+```squirrel
+// Draw a block in the top right quarter of the display
+display.move(64,0).rect(127,32,1,true).draw();
 ```
 
 ## Release Notes ##
