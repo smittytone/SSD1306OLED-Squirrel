@@ -77,7 +77,7 @@ This method moves the text cursor to the home position: the top left of the scre
 
 This sets or clears a single pixel, specified by its co-ordinates, on the display. It does not update the screen — call [*draw()*](#draw) to do so.
 
-By default, *plot()* uses the current ink colour: white for a white-on-black display, or black for black-on-white (see [*inverse()*](#inverse-makeinverse)), but you can set the ink colour to clear the pixel instead. Pass 1 for the foreground colour (the default) or 0 for the background colour.
+By default, *plot()* uses the current ink colour: white for a white-on-black display, or black for black-on-white (see [*inverse()*](#inversemakeinverse)), but you can set the ink colour to clear the pixel instead. Pass 1 for the foreground colour (the default) or 0 for the background colour.
 
 *plot()* returns a reference to the driver instance in order to allow command chaining.
 
