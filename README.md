@@ -131,11 +131,6 @@ This method draws a rectangle from the current cursor co-ordinates, extending by
 display.move(64,0).rect(127,32,1,true).draw();
 ```
 
-## Release Notes ##
-
-- 1.0.0 *Unreleased*
-    - Initial public release
-
 ## License ##
 
 The SSD1306OLED library is licensed under the [MIT License](LICENSE).
